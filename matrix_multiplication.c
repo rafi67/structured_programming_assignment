@@ -15,10 +15,12 @@ int main() {
         for(int j=0; j<n4; ++j) scanf("%d", &B[i][j]);
     }
 
-    int j = 0;
+    
 
     for(int i=0; i<n1; ++i) for(int j=0; j<n4; ++j) C[i][j] = 0;
-    
+
+    int j = 0;
+
     int cnt2 = 0;
     for(int i=0; i<n1; ++i) {
         int i2 = 0, cnt = 0;
@@ -37,7 +39,7 @@ int main() {
     }
 
     for(int i=0; i<n1; ++i) {
-        for(int j=0; j<n4; ++j) printf("%d ", C[i][j]);
+        for(int j2=0; j2<n4; ++j2) printf("%d ", C[i][j2]);
         printf("\n");
     }
     
