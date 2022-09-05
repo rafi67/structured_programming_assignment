@@ -12,24 +12,35 @@ void input(int n, int n2, int index, int index2) {
     input(n, n2, index, index2);
 }
 
-int max(int n, int n2) {
-    int m = a[0][0];
-    for(int i=0; i<n; ++i) {
-        for(int j=0; j<n2; ++j) {
-            if(m<a[i][j]) m = a[i][j];
-        }
+int min(int n, int n2, int i, int j, int m) {
+    if(i==n && j==n2) return m;
+
+    if(m>a[i][j] && i<n) m = a[i][j];
+
+    if(j<n2) ++j;
+
+    if(j==n2 && i<n) {
+        ++i;
+        j = 0;
     }
-    return m;
+
+    return min(n, n2, i, j, m);
 }
 
-int min(int n, int n2) {
-    int m = a[0][0];
-    for(int i=0; i<n; ++i) {
-        for(int j=0; j<n2; ++j) {
-            if(m>a[i][j]) m = a[i][j];
-        }
+int max(int n, int n2, int i, int j, int m) {
+    if(i==n && j==n2) return m;
+
+    if(m<a[i][j] && i<n) m = a[i][j];
+
+
+    if(j<n2) ++j;
+
+    if(j==n2 && i<n) {
+        ++i;
+        j = 0;
     }
-    return m;
+
+    return max(n, n2, i, j, m);
 }
 
 int main() {
@@ -37,14 +48,12 @@ int main() {
     int n, n2;
     scanf("%d %d", &n, &n2);
 
-    for(int i=0; i<n; i++) {
-        for(int j=0; j<n2; ++j) a[i][j] = 0;
-    }
-
     input(n, n2, 0, 0);
 
-    printf("Minimum value in 2d array is %d\n", min(n, n2));
-    printf("Maximum value in 2d array is %d\n", max(n, n2));
+    int m2 = a[0][0];
+
+    printf("Minimum value in 2d array is %d\n", min(n, n2, 0, 0, m2));
+    printf("Maximum value in 2d array is %d\n", max(n, n2, 0, 0, m2));
 
     return 0;
 
