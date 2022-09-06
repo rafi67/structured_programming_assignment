@@ -5,6 +5,12 @@ int main() {
     int n1, n2, n3, n4;
     scanf("%d %d %d %d",  &n1, &n2, &n3, &n4);
 
+    while(n2!=n3) {
+        printf("Error your input does not equal to A matrix column and B matrix row\n");
+        printf("please enter row and colunm of A and B matrix:\n");
+        scanf("%d %d %d %d", &n1, &n2, &n3, &n4);
+    }
+
     int A[n1][n2], B[n3][n4], C[n1][n4];
 
     for(int i=0; i<n1; ++i) {
@@ -15,26 +21,15 @@ int main() {
         for(int j=0; j<n4; ++j) scanf("%d", &B[i][j]);
     }
 
-    
-
     for(int i=0; i<n1; ++i) for(int j=0; j<n4; ++j) C[i][j] = 0;
-
-    int j = 0;
-
-    int cnt2 = 0;
-    for(int i=0; i<n1; ++i) {
-        int i2 = 0, cnt = 0;
-        for(j; j<n4; ++j) {
+    for(int i=0; i<n4; ++i) {
+        int i2 = 0;
+        for(int j = 0; j<n1; ++j) {
             int temp = 0;
             for(int k=0; k<n2; ++k) temp += A[i2][k]*B[k][i];
-            ++cnt;
             C[j][i] += temp;
             temp = 0;
             if(i2!=n2) ++i2;
-        }
-        if(cnt2!=n4) {
-            ++cnt2;
-            j=0;
         }
     }
 
