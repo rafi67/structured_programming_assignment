@@ -8,7 +8,7 @@ void input(int n, int n2, int index, int index2) {
         ++index;
         index2 = 0;
     }
-    scanf("%d", &a[index][index2]);
+    if(index<n) scanf("%d", &a[index][index2]);
     if(index2<n2) ++index2;
     input(n, n2, index, index2);
 }
