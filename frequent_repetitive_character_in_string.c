@@ -31,7 +31,6 @@ int main() {
     for(int i=0; i<26; ++i) a[i] = 0;
 
     while(c[index]!='\0') {
-        int e = 0;
         int cnt = count(c, c[index], index);
         int i = c[index]-'a';
         a[i] = (a[i]<cnt)? cnt:a[i];
